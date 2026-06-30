@@ -1709,7 +1709,7 @@ var W = class {
 	searchGeneration = 0;
 	events = {
 		search: void 0,
-		searchFilter: (e, t) => e.text.toLowerCase().indexOf(t.toLowerCase()) !== -1,
+		searchFilter: (e, t) => e.text.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().indexOf(t.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase()) !== -1,
 		addable: void 0,
 		beforeChange: void 0,
 		afterChange: void 0,
