@@ -1700,7 +1700,7 @@
             this.events = {
                 search: undefined,
                 searchFilter: (opt, search) => {
-                    return opt.text.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+                    return opt.text.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().indexOf(search.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase()) !== -1;
                 },
                 addable: undefined,
                 beforeChange: undefined,

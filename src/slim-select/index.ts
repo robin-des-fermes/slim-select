@@ -42,7 +42,9 @@ export default class SlimSelect {
   public events = {
     search: undefined,
     searchFilter: (opt: Option, search: string) => {
-      return opt.text.toLowerCase().indexOf(search.toLowerCase()) !== -1
+      return opt.text.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase().indexOf(
+        search.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase()
+      ) !== -1
     },
     addable: undefined,
     beforeChange: undefined,
